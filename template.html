@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Data review activity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Bugzilla stewarding activity</h1>
+                Last 180 days of activity in Bugzilla. Does not include Github.
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col">
+                <h3>Inbound requests per steward</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Steward</th>
+                            <th>Requests</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in inbound %}
+                        <tr>
+                            <td>{{ entry.steward }}</td>
+                            <td>{{ entry.requests }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h3>Requests approved per steward</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Steward</th>
+                            <th>Reviews</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in granted %}
+                        <tr>
+                            <td>{{ entry.steward }}</td>
+                            <td>{{ entry.granted }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <h3>Requests by requestor</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Requestor</th>
+                            <th>Requests</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in requestors %}
+                        <tr>
+                            <td>{{ entry.requestor }}</td>
+                            <td>{{ entry.requests }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
